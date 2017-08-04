@@ -1,0 +1,30 @@
+button{
+  margin: 2px;
+  background: white;
+  color: black;
+  width: 200px;
+  height: 50px;
+  border: 1px solid;
+}
+
+button:hover{
+  margin: 2px;
+  background: black;
+  color: white;
+}
+
+button:active {
+  border: 2px solid green;
+}
+
+a {
+  text-decoration: none;
+  background: black;
+  color: white;
+  margin: 2px;
+  width: 70px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+button:focus {outline:0;}

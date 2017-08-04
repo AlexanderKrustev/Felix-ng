@@ -1,0 +1,12 @@
+
+    <div class="col-sm-6">
+      <button class="btn btn-small btn-default" (click)="listProducts()">List Available Products</button>
+    </div>
+      <div class="col-sm-6">
+      <button class="btn btn-small btn-default">Create New Product</button>
+      </div>
+
+
+<ul>
+  <li *ngFor="let product of productsArr">{{product.Name}}</li>
+</ul>

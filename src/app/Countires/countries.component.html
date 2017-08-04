@@ -1,0 +1,11 @@
+<div class="col-sm-6">
+  <button class="btn btn-small btn-default" (click)="listCountries()">List Available Countries</button>
+</div>
+<div class="col-sm-6">
+  <button class="btn btn-small btn-default">Create New Country</button>
+</div>
+<ul>
+  <li *ngFor="let country of countriesArr">{{country.Name}}</li>
+  <div *ngIf="countriesArr">Countries Empty</div>
+
+</ul>

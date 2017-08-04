@@ -1,0 +1,9 @@
+<div class="col-sm-6">
+  <button class="btn btn-small btn-default" (click)="listConsignees()">List Available Consignees</button>
+</div>
+<div class="col-sm-6">
+  <button class="btn btn-small btn-default">Create New Consignee</button>
+</div>
+<ul>
+  <li *ngFor="let consignee of consigneesArr">{{consignee.Name}}</li>
+</ul>
