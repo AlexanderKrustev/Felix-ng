@@ -31,8 +31,8 @@ export class AuthService{
     return this.http.post(url, this.body,{headers: this.header})
       .toPromise()
       .then(
-        (resp) => {localStorage.setItem('currentUser',resp.json().access_token)})
-          .catch(error=> console.dir(error))
+        (resp) => localStorage.setItem('currentUser',resp.json().access_token))
+          .catch(error=> console.log(error))
 
   }
 

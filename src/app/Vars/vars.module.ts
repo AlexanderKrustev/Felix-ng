@@ -6,14 +6,8 @@ import {BuyersComponent} from "../Buyers/buyers.component";
 import {CountriesComponent} from "../Countires/countries.component";
 import {PackagesComponent} from "../Packages/packages.components";
 
-
-
 import {PortsComponent} from "../Ports/ports.component";
 import {ConsigneesComponent} from "../Consignees/consignees.component";
-
-
-
-
 
 import {FormsModule} from "@angular/forms";
 import {FormulationsComponent} from "../Formulations/formulations.component";

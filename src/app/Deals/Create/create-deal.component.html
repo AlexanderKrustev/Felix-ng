@@ -1,0 +1,25 @@
+<br/>
+<h2>Create Deal</h2>
+
+<div class="col-md-3 offset-sm-3">
+  <table class="table">
+    <tr>
+      <td><label for="buyer">Select Buyer</label></td>
+      <td><select name="buyer" [(ngModel)]="buyer">
+        <option *ngFor="let b of buyers" [ngValue]="b">{{b.Name}}</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td><label for="consignee">Select Consignee</label></td>
+      <td><select name="consignee" [(ngModel)]="consignee">
+        <option *ngFor="let c of consignees" [ngValue]="c">{{c.Name}}</option>
+      </select></td>
+    </tr>
+  </table>
+</div>
+
+
+<div class="col-md-6 offset-sm-3">
+  <input type='submit' (click)="submitDeal()"/>
+</div>
+
