@@ -1,10 +1,29 @@
-<div class="col-sm-6">
-  <button class="btn btn-small btn-default" (click)="listFormulations()">List Available Formulations</button>
+<div class="col-sm-6 offset-sm-2">
+  <div class="panel">
+    <h3>Formulations Table</h3>
+    <table  class="table table-striped">
+      <thead>
+      <tr>
+        <th class="thead-inverse">No:</th>
+        <th class="thead-inverse">Name</th>
+        <th class="thead-inverse">Actions</th>
+      </tr>
+      </thead>
+      <tR>
+      <tr *ngFor="let f of formualtionArr;let i=index">
+        <td>{{i}}</td>
+        <td>{{f.Name}}</td>
+        <td>
+          <button (click)="onDelete(f)">Delete</button>
+          <button >Edit</button>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="text" [(ngModel)]="formulation.Name" name="portName" id="portName" required></td>
+        <td><button  (click)='onSubmit()'>Add New Formulation</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div class="col-sm-6">
-  <button class="btn btn-small btn-default">Create New Formulation</button>
-</div>
-<ul>
-  <li *ngFor="let fr of formulationsArr">{{fr.Name}}</li>
-  <div *ngIf="formulationsArr">Countries Empty</div>
-</ul>

@@ -1,8 +1,9 @@
-import {Component} from "@angular/core"
+import { Component, OnInit} from "@angular/core"
 import {Port} from "./Port";
-import {PortsService} from "./ports.service";
+import {LoaderService} from "../Loader/loader.service";
+import {DataService} from "../Services/DataService";
 
-
+const url: string = "http://localhost:22064/api/Ports";
 
 @Component({
   selector: "ports-tab",
@@ -10,32 +11,55 @@ import {PortsService} from "./ports.service";
   styleUrls: ['../Shared/vars.buttons.css','../Shared/vars.table.css']
 })
 
-export class PortsComponent{
-  shown: boolean = false;
-  portArr : Array<Port>;
+
+export class PortsComponent implements OnInit{
+  portArr : Port[]
   port1:Port=new Port();
 
-  constructor (private data : PortsService) { }
+  constructor (
+    private data : DataService,
+    private loader: LoaderService) {
 
-  listPorts(){
-    this.data.get()
-      .then(portInfo=> this.portArr=portInfo);
-    this.shown=false;
   }
 
+  ngOnInit(){
+    this.listPorts()
+  }
+
+  private listPorts(){
+    this.loader.startLoading();
+    this.data.getData(url)
+      .subscribe(
+        result=>{this.portArr=result},
+        error => {console.error(error)},
+        ()=>this.loader.ednLoading()
+        )
+  }
 
   onSubmit() {
-   this.data.create(this.port1)
+   if(this.data.validateAdd(this.portArr,this.port1.Name)){
+     this.loader.startLoading()
+     this.data.create(url,this.port1)
+       .subscribe(
+         result=>this.listPorts(),
+          error=>{console.error(error)},
+         ()=>this.loader.ednLoading()
+       )
+   }
+    else{
+     alert(this.port1.Name+' already exist')
+   }
 
   }
 
-  onDelete(id:string){
-
-    this.data.deleteById(id);
+  onDelete(pp: Port){
+    this.loader.startLoading()
+    this.data.deleteById(url,pp.Key)
+      .subscribe(
+        response => this.portArr = this.portArr.filter(h => h !== pp),
+        error=>console.error(error) , //TODO: Global error handling
+        ()=>this.loader.ednLoading()
+      )
   }
 
-
-  showForm(){
-    this.shown=!this.shown;
-  }
 }

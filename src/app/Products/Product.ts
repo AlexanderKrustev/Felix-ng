@@ -1,4 +1,4 @@
 export class Product{
-  key: string;
-  name: string;
+Key: string;
+Name: string
 }

@@ -1,11 +1,31 @@
-<div class="col-sm-6">
-  <button class="btn btn-small btn-default" (click)="listCountries()">List Available Countries</button>
-</div>
-<div class="col-sm-6">
-  <button class="btn btn-small btn-default">Create New Country</button>
-</div>
-<ul>
-  <li *ngFor="let country of countriesArr">{{country.Name}}</li>
-  <div *ngIf="countriesArr">Countries Empty</div>
+<div class="col-sm-6 offset-sm-2">
+  <div *ngIf='!shown' class="panel">
+    <h3>Countries Table</h3>
+    <table  class="table table-striped">
+      <thead>
+      <tr>
+        <th class="thead-inverse">No:</th>
+        <th class="thead-inverse">Name</th>
+        <th class="thead-inverse">Actions</th>
+      </tr>
+      </thead>
+      <tR>
+      <tr *ngFor="let countr of countriesArr;let i=index">
+        <td>{{i}}</td>
+        <td>{{countr.Name}}</td>
+        <td>
+          <button (click)="onDelete(countr)">Delete</button>
+          <button >Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="text" [(ngModel)]="country.Name" name="portName" id="portName" required></td>
 
-</ul>
+        <td><button  (click)='onSubmit()'>Add New Port</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

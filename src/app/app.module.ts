@@ -14,6 +14,10 @@ import {FormsModule} from "@angular/forms";
 import {AuthService} from "./Login/auth.service";
 import {AuthGuard} from "./Login/auth-gruard.service";
 import {UnauthorizedComponent} from "./Auth/unauthorized.component";
+import {LoaderService} from "./Loader/loader.service";
+import {LoaderComponent} from "./Loader/loader.component";
+import {DataService} from "./Services/DataService";
+
 
 
 @NgModule({
@@ -25,7 +29,8 @@ import {UnauthorizedComponent} from "./Auth/unauthorized.component";
     LoginComponent,
     DealComponent,
     FooterComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,12 @@ import {UnauthorizedComponent} from "./Auth/unauthorized.component";
     VarsModule,
     FormsModule
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    LoaderService,
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

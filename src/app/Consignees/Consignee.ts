@@ -1,4 +1,4 @@
 export class Consignee{
-  key: string;
-  name: string;
+  Key: string;
+  Name: string;
 }

@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core"
+import {Injectable, NgModule} from "@angular/core"
 import {RouterModule, Routes} from "@angular/router"
 
 import {HomeComponent} from "./Home/home.component"
@@ -39,9 +39,9 @@ const routes: Routes =[
 @NgModule({
   imports:[
     RouterModule.forRoot(routes,{ enableTracing: true } )
-
   ],
   exports:[RouterModule]
 })
 
+@Injectable()
 export class AppRoutesModule{}

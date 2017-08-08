@@ -1,12 +1,31 @@
+<div class="col-sm-6 offset-sm-2">
+  <div *ngIf='!shown' class="panel">
+    <h3>Products Table</h3>
+    <table  class="table table-striped">
+      <thead>
+      <tr>
+        <th class="thead-inverse">No:</th>
+        <th class="thead-inverse">Name</th>
+        <th class="thead-inverse">Actions</th>
+      </tr>
+      </thead>
+      <tR>
+      <tr *ngFor="let prod of productsArr;let i=index">
+        <td>{{i}}</td>
+        <td>{{prod.Name}}</td>
+        <td>
+          <button (click)="onDelete(prod)">Delete</button>
+          <button >Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="text" [(ngModel)]="product.Name" name="portName" id="portName" required></td>
 
-    <div class="col-sm-6">
-      <button class="btn btn-small btn-default" (click)="listProducts()">List Available Products</button>
-    </div>
-      <div class="col-sm-6">
-      <button class="btn btn-small btn-default">Create New Product</button>
-      </div>
-
-
-<ul>
-  <li *ngFor="let product of productsArr">{{product.Name}}</li>
-</ul>
+        <td><button  (click)='onSubmit()'>Add New Port</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

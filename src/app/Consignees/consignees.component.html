@@ -1,9 +1,31 @@
-<div class="col-sm-6">
-  <button class="btn btn-small btn-default" (click)="listConsignees()">List Available Consignees</button>
+<div class="col-sm-6 offset-sm-2">
+  <div *ngIf='!shown' class="panel">
+    <h3>Consigees Table</h3>
+    <table  class="table table-striped">
+      <thead>
+      <tr>
+        <th class="thead-inverse">No:</th>
+        <th class="thead-inverse">Name</th>
+        <th class="thead-inverse">Actions</th>
+      </tr>
+      </thead>
+      <tR>
+      <tr *ngFor="let con of consigneesArr;let i=index">
+        <td>{{i}}</td>
+        <td>{{con.Name}}</td>
+        <td>
+          <button (click)="onDelete(con)">Delete</button>
+          <button >Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="text" [(ngModel)]="consignee.Name" name="portName" id="portName" required></td>
+
+        <td><button  (click)='onSubmit()'>Add New Port</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div class="col-sm-6">
-  <button class="btn btn-small btn-default">Create New Consignee</button>
-</div>
-<ul>
-  <li *ngFor="let consignee of consigneesArr">{{consignee.Name}}</li>
-</ul>

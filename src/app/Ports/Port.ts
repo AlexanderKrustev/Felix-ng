@@ -1,4 +1,4 @@
 export class Port{
-  Id: string;
+  Key: string;
   Name: string;
 }

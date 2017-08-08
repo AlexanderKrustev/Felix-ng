@@ -1,9 +1,4 @@
-<div class="col-sm-4">
-  <button class="btn btn-small btn-default" (click)="listPorts()">List Available Ports</button>
-  <button class="btn btn-small btn-default" (click)="showForm()">Create New Port</button>
-</div>
-
-<div class="col-sm-6">
+<div class="col-sm-6 offset-sm-2">
   <div *ngIf='!shown' class="panel">
   <h3>Ports Table</h3>
   <table  class="table table-striped">
@@ -14,32 +9,29 @@
       <th class="thead-inverse">Actions</th>
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let port of portArr">
-      <td>{{port.Key}}</td>
-      <td>{{port.Name}}</td>
+    <tR>
+    <tr *ngFor="let p of portArr;let i=index">
+      <td>{{i}}</td>
+      <td>{{p.Name}}</td>
       <td>
-        <button (click)="onDelete(port.Key)">Delete</button>
-        <a href="#"> Edit </a></td>
+        <button (click)="onDelete(p)">Delete</button>
+        <button >Edit</button>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="text" [(ngModel)]="port1.Name" name="portName" id="portName" required></td>
+
+      <td><button  (click)='onSubmit()'>Add New Port</button>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
 </div>
 
-<div class="col-sm-6">
-  <div *ngIf='shown' class="panel">
-    <h3>Port Form</h3>
-    <form>
-      <div class="form-group col-md-2">
-        <label for="portName">Port Name</label>
-        <input type="text" [(ngModel)]="port1.Name" name="portName" id="portName" required>
-      </div>
-      <button type="submit" (click)='onSubmit()' class="btn btn-default col-md-2">Submit</button>
 
-    </form>
-  </div>
-</div>
+
 
 
 

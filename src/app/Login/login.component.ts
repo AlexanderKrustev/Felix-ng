@@ -1,29 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 import {AuthService} from "./auth.service"
 import {User} from "./user";
+
 
 @Component({
   selector: 'login',
   templateUrl: 'login.component.html'
 })
 
-export class LoginComponent  {
-  currentUser: User=new User();
-  loading = false;
-  error = '';
+export class LoginComponent {
+  currentUser: User = new User();
+
+
 
 
   constructor(private router: Router,
-              private authenticationService: AuthService) {
+              private auth: AuthService) {
   }
 
 
   login() {
-    this.authenticationService.login(this.currentUser.username, this.currentUser.password);
+    this.auth.login(this.currentUser.username, this.currentUser.password);
   }
 
 
 
-
 }
+

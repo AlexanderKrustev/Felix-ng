@@ -1,6 +1,9 @@
 import {Component} from "@angular/core"
 import {Consignee} from "./Consignee";
-import {ConsigneesService} from "./consignees.service";
+import {DataService} from "../Services/DataService";
+import {LoaderService} from "../Loader/loader.service";
+
+const url: string = "http://localhost:22064/api/Consignees";
 
 @Component({
   selector: "component-tab",
@@ -9,13 +12,53 @@ import {ConsigneesService} from "./consignees.service";
 })
 
 export class ConsigneesComponent{
-  consigneesArr : Array<Consignee>
-  constructor (private data : ConsigneesService) { }
+  consigneesArr : Consignee[]
+  consignee: Consignee = new Consignee();
 
-  listConsignees(){
-    this.data.getConsignees()
-      .then(consigneesInfo=> this.consigneesArr=consigneesInfo);
+  constructor (
+    private data : DataService,
+    private loader: LoaderService) {
 
+  }
+
+  ngOnInit(){
+    this.listCountries()
+  }
+
+  private listCountries(){
+    this.loader.startLoading();
+    this.data.getData(url)
+      .subscribe(
+        result=>{this.consigneesArr=result},
+        error => {console.error(error)},
+        ()=>this.loader.ednLoading()
+      )
+  }
+
+  onSubmit() {
+    if(this.data.validateAdd(this.consigneesArr,this.consignee.Name)){
+      this.loader.startLoading()
+      this.data.create(url,this.consignee)
+        .subscribe(
+          result=>this.listCountries(),
+          error=>{console.error(error)},
+          ()=>this.loader.ednLoading()
+        )
+    }
+    else{
+      alert(this.consignee.Name+' already exist')
+    }
+
+  }
+
+  onDelete(inputPack: Consignee){
+    this.loader.startLoading()
+    this.data.deleteById(url, inputPack.Key)
+      .subscribe(
+        response => this.consigneesArr = this.consigneesArr.filter(h => h !== inputPack),
+        error=>console.error(error) ,
+        ()=>this.loader.ednLoading()
+      )
   }
 
 }

@@ -1,10 +1,32 @@
-<div class="col-sm-6">
-    <button class="btn btn-small btn-default" (click)="listPackages()">List Available Packages</button>
+<div class="col-sm-6 offset-sm-2">
+  <div *ngIf='!shown' class="panel">
+    <h3>Package Table</h3>
+    <table  class="table table-striped">
+      <thead>
+      <tr>
+        <th class="thead-inverse">No:</th>
+        <th class="thead-inverse">Name</th>
+        <th class="thead-inverse">Actions</th>
+      </tr>
+      </thead>
+      <tR>
+      <tr *ngFor="let p of packArr; let i=index">
+        <td>{{i}}</td>
+        <td>{{p.Name}}</td>
+        <td>
+          <button (click)="onDelete(p)">Delete</button>
+          <button >Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="text" [(ngModel)]="pack.Name" name="portName" id="portName" required></td>
+
+        <td><button  (click)='onSubmit()'>Add New Port</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div class="col-sm-6">
-    <button class="btn btn-small btn-default">Create New Package</button>
-</div>
-<ul>
-  <li *ngFor="let package of packagesArr">{{package.Name}}<a href="#">Delete</a><a href="#">Edit</a></li>
-  <div *ngIf="packagesArr">Packages Empty</div>
-</ul>
+
