@@ -1,11 +1,14 @@
 import {Component, OnInit} from "@angular/core"
 import {Buyer} from "../../Buyers/Buyer";
-import {DataService} from "../../Services/DataService";
+import {DataService} from "../../Services/data.services";
 import {LoaderService} from "../../Loader/loader.service";
 import {Consignee} from "../../Consignees/Consignee";
+import {Deal} from "../Deal";
+
 
 const buyerUrl: string = "http://localhost:22064/api/Buyers";
 const consigneeUrl: string = "http://localhost:22064/api/Consignees";
+const dealsUrl: string = "http://localhost:22064/api/Deals";
 
 @Component({
   selector: 'create-deal',
@@ -26,6 +29,7 @@ export class CreateDealComponent implements OnInit{
    constructor(private data: DataService,private loader: LoaderService){
        this.buyer=new Buyer();
        this.consignee=new Consignee();
+       this.deal= new Deal();
    }
 
   ngOnInit(){
@@ -54,6 +58,16 @@ export class CreateDealComponent implements OnInit{
   }
 
   submitDeal(){
+    this.deal.BuyerId=this.buyer.Key;
+    this.deal.ConsigneeId=this.consignee.Key;
+    console.dir(JSON.stringify(this.deal))
+   this.data.create(dealsUrl,this.deal)
+     .subscribe(
+       result=>console.dir(result),
+       error=>{console.error(error)},
+       ()=>this.loader.ednLoading()
+     )
+
 
   }
 }

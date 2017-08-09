@@ -19,7 +19,7 @@ import {LoaderComponent} from "./Loader/loader.component";
 import {AuthService} from "./Login/auth.service";
 import {AuthGuard} from "./Login/auth-gruard.service";
 import {LoaderService} from "./Loader/loader.service";
-import {DataService} from "./Services/DataService";
+import {DataService} from "./Services/data.services";
 
 
 

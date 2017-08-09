@@ -1,7 +1,7 @@
 import { Component, OnInit} from "@angular/core"
 import {Port} from "./Port";
 import {LoaderService} from "../Loader/loader.service";
-import {DataService} from "../Services/DataService";
+import {DataService} from "../Services/data.services";
 
 const url: string = "http://localhost:22064/api/Ports";
 

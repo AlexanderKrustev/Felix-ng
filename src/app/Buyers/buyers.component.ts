@@ -1,6 +1,6 @@
 import {Component} from "@angular/core"
 import {Buyer} from "./Buyer";
-import {DataService} from "../Services/DataService";
+import {DataService} from "../Services/data.services";
 import {LoaderService} from "../Loader/loader.service";
 
 

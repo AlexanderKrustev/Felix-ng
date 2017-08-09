@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core"
 import {Package} from "./Package";
-import {DataService} from "../Services/DataService";
+import {DataService} from "../Services/data.services";
 import {LoaderService} from "../Loader/loader.service";
 
 const url: string = "http://localhost:22064/api/Packages";

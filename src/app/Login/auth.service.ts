@@ -25,14 +25,14 @@ export class AuthService{
   }
 
   login(username: string, password: string){
-    this.body.set('username',username);
-    this.body.set('password',password);
-    this.body.set('grant_type','password');
-    return this.http.post(url, this.body,{headers: this.header})
-      .toPromise()
-      .then(
-        (resp) => localStorage.setItem('currentUser',resp.json().access_token))
-          .catch(error=> console.log(error))
+ // this.body.set('username',username);
+ // this.body.set('password',password);
+ // this.body.set('grant_type','password');
+ // return this.http.post(url, this.body,{headers: this.header})
+ //   .toPromise()
+ //   .then(
+ //     (resp) => localStorage.setItem('currentUser',resp.json().access_token))
+ //       .catch(error=> console.log(error))
 
   }
 

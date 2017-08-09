@@ -1,7 +1,7 @@
 import {Component} from "@angular/core"
 import {OnInit} from "@angular/core"
 import {Product} from "./Product"
-import {DataService} from "../Services/DataService"
+import {DataService} from "../Services/data.services"
 import {LoaderService} from "../Loader/loader.service"
 
 const url: string = "http://localhost:22064/api/Products";

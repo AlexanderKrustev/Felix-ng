@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core"
-import {DataService} from "../Services/DataService";
+import {DataService} from "../Services/data.services";
 import {LoaderService} from "../Loader/loader.service";
 import {Formulation} from "./formulation";
 

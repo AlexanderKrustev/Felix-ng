@@ -1,6 +1,6 @@
 import {Component} from "@angular/core"
 import {Consignee} from "./Consignee";
-import {DataService} from "../Services/DataService";
+import {DataService} from "../Services/data.services";
 import {LoaderService} from "../Loader/loader.service";
 
 const url: string = "http://localhost:22064/api/Consignees";

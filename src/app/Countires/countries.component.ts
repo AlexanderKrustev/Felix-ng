@@ -1,6 +1,6 @@
 import {Component} from "@angular/core"
 import {Country} from "./Country";
-import {DataService} from "../Services/DataService";
+import {DataService} from "../Services/data.services";
 import {LoaderService} from "../Loader/loader.service";
 
 const url: string = "http://localhost:22064/api/Countries";
