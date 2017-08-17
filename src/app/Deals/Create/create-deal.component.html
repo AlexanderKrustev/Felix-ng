@@ -1,29 +1,312 @@
-<br/>
-<h2>Create Deal</h2>
-
 <div class="col-md-3 offset-sm-3">
+  <br/>
+  <h2>Create Deal</h2>
   <table class="table">
+
+    <tr>
+      <td><label for="orderNumber">Order Number</label></td>
+      <td><input type="text" id="orderNumber" [(ngModel)]="deal.OrderNumber">
+      </td>
+    </tr>
+    <tr>
+      <td><label for="rexport">Reexport</label></td>
+      <td><input type="checkbox" id="rexport" [(ngModel)]="deal.Reexport">
+      </td>
+    </tr>
+
+
+    <tr>
+      <td><label for="expeditionDate">Expedition Date</label></td>
+      <td id="expeditionDate">
+        <div *ngIf="!deal.ExpeditionDate">DD/MM/YYYY</div>
+        <div *ngIf="deal.ExpeditionDate">{{deal.ExpeditionDate | date: 'shortDate'}}</div>
+        <button class="btn btn-default" (click)="showDate('expDate')">{{expDateBtnText}}</button>
+        <div class="myDatepicker">
+          <datepicker
+            [hidden]="!showExpDatepick"
+            [(ngModel)]="deal.ExpeditionDate"
+            [showWeeks]="true"
+            [minDate]="minDate"
+            [dateDisabled]="disabledDate"
+            [onlyCurrentMonth]=false
+
+          >
+          </datepicker>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="invoiceNumber">Invoice Number</label></td>
+      <td><input type="text" id="invoiceNumber" [(ngModel)]="deal.InvoiceNumber">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="inkasoAkrNumber">Incaso/Bill of credit Number</label></td>
+      <td><input type="text" name="inkasoArkNumber" [(ngModel)]="deal.InkasoAkrNumber">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="clientOrderNumber">Cliner Order Number</label></td>
+      <td><input type="text" name="clientOrderNumber" [(ngModel)]="deal.ClientOrderId">
+      </td>
+    </tr>
+
     <tr>
       <td><label for="buyer">Select Buyer</label></td>
-      <td><select name="buyer" [(ngModel)]="buyer">
-        <option *ngFor="let b of buyers" [ngValue]="b">{{b.Name}}</option>
-      </select></td>
+      <td>
+        <select name="buyer" [(ngModel)]="buyer">
+          <option *ngFor="let b of buyers" [ngValue]="b">{{b.Name}}</option>
+        </select></td>
     </tr>
+
     <tr>
       <td><label for="consignee">Select Consignee</label></td>
       <td><select name="consignee" [(ngModel)]="consignee">
-        <option *ngFor="let c of consignees" [ngValue]="c">{{c.Name}}</option>
+        <option *ngFor="let consigneeField of consignees" [ngValue]="consigneeField">{{consigneeField.Name}}</option>
       </select></td>
     </tr>
+
+
     <tr>
-      <td><label for="orderNumber">Order Number</label></td>
-      <td><input type="text" name="orderNumber" [(ngModel)]="deal.OrderNumber">
+      <td><label for="destinationPort">Destination Port</label></td>
+      <td><input type="text" name="destinationPort" [(ngModel)]="deal.DestinationPort">
       </td>
     </tr>
+
+    <tr>
+      <td><label for="country">Select Country</label></td>
+      <td><select name="country" [(ngModel)]="country">
+        <option *ngFor="let countryField of countries" [ngValue]="countryField">{{countryField.Name}}</option>
+      </select></td>
+    </tr>
+
+
+    <tr>
+      <td><label for="packing">Select Packing</label></td>
+      <td><select name="packing" [(ngModel)]="package">
+        <option *ngFor="let packField of packages" [ngValue]="packField">{{packField.Name}}</option>
+      </select></td>
+    </tr>
+
+
+    <tr>
+      <td><label for="znmn">ZN-MN</label></td>
+      <td><input type="text" name="znmn" [(ngModel)]="deal.ZN_MN">
+      </td>
+    </tr>
+
+
+
+    <tr>
+      <td><label for="product">Select Product</label></td>
+      <td><select name="product" [(ngModel)]="product">
+        <option *ngFor="let productField of products" [ngValue]="productField">{{productField.Name}}</option>
+      </select></td>
+    </tr>
+
+
+    <tr>
+      <td><label for="formulation">Select Formulation</label></td>
+      <td><select name="formulation" [(ngModel)]="formulation">
+        <option *ngFor="let formulationField of formulations" [ngValue]="formulationField">{{formulationField.Name}}</option>
+      </select></td>
+    </tr>
+
+
+    <tr>
+      <td><label for="qty">QTY in kilograms</label></td>
+      <td><input type="text" name="qty" [(ngModel)]="deal.Quantity">
+      </td>
+    </tr>
+
+
+
+    <tr>
+      <td><label for="qty">Price Per kg</label></td>
+      <td><input type="text" name="qty" [(ngModel)]="deal.PricePerKg">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="cr">Credit Terms</label></td>
+      <td><input type="text" name="cr" [(ngModel)]="deal.CreditTerms">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="qty">Currency of the Deal</label></td>
+      <td>
+        <label for="usd">$</label>
+        <input type="radio" name="usd" value="$" [(ngModel)]="deal.Currency">
+        <label for="euro">€</label>
+        <input type="radio" name="euro" value="€"[(ngModel)]="deal.Currency">
+      </td>
+    </tr>
+
+    <tr *ngIf="deal.Currency=='$'">
+      <td><label for="suminUsd">Sum In USD</label></td>
+      <td><input type="text" name="suminUsd" [(ngModel)]="deal.SumInUSD">
+      </td>
+    </tr>
+
+    <tr *ngIf="deal.Currency=='€'">
+      <td><label for="suminEuro">Sum In Euro</label></td>
+      <td><input type="text" name="suminUsd" [(ngModel)]="deal.SumInEuro">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="cr">Currency Rate</label></td>
+      <td><input type="text" name="cr" [(ngModel)]="deal.CR">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="viaPort">Via Port</label></td>
+      <td><input type="text" name="viaPort" [(ngModel)]="deal.ViaPort">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="freiCurrency">Frei Currency</label></td>
+      <td>
+        <label for="usdFrei">$</label>
+        <input type="radio" name="usdFrei" value="$" [(ngModel)]="deal.FreiCurrency">
+        <label for="euroFrei">€</label>
+        <input type="radio" name="euroFrei" value="€"[(ngModel)]="deal.FreiCurrency">
+      </td>
+    </tr>
+
+    <tr *ngIf="deal.FreiCurrency=='$'">
+      <td><label for="freiUsd">Frei In USD</label></td>
+      <td><input type="text" name="freiUsd" [(ngModel)]="deal.Frei">
+      </td>
+    </tr>
+
+    <tr *ngIf="deal.FreiCurrency=='€'">
+      <td><label for="freiEuro">Frei In Euro</label></td>
+      <td><input type="text" name="freiEuro" [(ngModel)]="deal.Frei">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="insCurrency">Insuranse Currency</label></td>
+      <td>
+        <label for="usdIns">$</label>
+        <input type="radio" name="usdIns" value="$" [(ngModel)]="deal.InsCurrency">
+        <label for="euroIns">€</label>
+        <input type="radio" name="euroIns" value="€"[(ngModel)]="deal.InsCurrency">
+      </td>
+    </tr>
+
+    <tr *ngIf="deal.InsCurrency=='$'">
+      <td><label for="insUsd">Frei In USD</label></td>
+      <td><input type="text" name="insUsd" [(ngModel)]="deal.Insuranse">
+      </td>
+    </tr>
+
+    <tr *ngIf="deal.InsCurrency=='€'">
+      <td><label for="insEuro">Frei In Euro</label></td>
+      <td><input type="text" name="insEuro" [(ngModel)]="deal.Insuranse">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="transportType">Type Of Transport</label></td>
+      <td><input type="text" name="transportType" [(ngModel)]="deal.TypeOfTransport">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="transportUnits">Transport Units</label></td>
+      <td><input type="text" name="transportUnits" [(ngModel)]="deal.TransportUnit">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="transportNumber">Transport Number</label></td>
+      <td><input type="text" name="transportNumber" [(ngModel)]="deal.TransportNumber">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="transportDoc">Transport Document</label></td>
+      <td><input type="text" name="transportDoc" [(ngModel)]="deal.TransportDoc">
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="dateBL">Expedition Date</label></td>
+      <td>
+        <div *ngIf="!deal.DateBL">DD/MM/YYYY</div>
+        <div *ngIf="deal.DateBL">{{deal.DateBL | date: 'shortDate'}}</div>
+        <button class="btn btn-default" (click)="showDate('blDate')">{{dateBlBtnText}}</button>
+        <div class="myDatepicker">
+          <datepicker
+            [hidden]="!showDatebl"
+            [(ngModel)]="deal.DateBL"
+            [showWeeks]="true"
+            [minDate]="minDate"
+            [dateDisabled]="disabledDate"
+            [onlyCurrentMonth]=false
+          >
+          </datepicker>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="ETD">ETD</label></td>
+      <td>
+        <div *ngIf="!deal.ETD">DD/MM/YYYY</div>
+        <div *ngIf="deal.ETD">{{deal.ETD | date: 'shortDate'}}</div>
+        <button class="btn btn-default" (click)="showDate('etdDate')">{{ETDBtnText}}</button>
+        <div class="myDatepicker">
+          <datepicker
+            [hidden]="!showDateETD"
+            [(ngModel)]="deal.ETD"
+            [showWeeks]="true"
+            [minDate]="minDate"
+            [dateDisabled]="disabledDate"
+            [onlyCurrentMonth]=false
+          >
+          </datepicker>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="ETA">ETA</label></td>
+      <td>
+        <div *ngIf="!deal.ETA">DD/MM/YYYY</div>
+        <div *ngIf="deal.ETA">{{deal.ETA | date: 'shortDate'}}</div>
+        <button class="btn btn-default" (click)="showDate('etaDate')">{{ETABtnText}}</button>
+        <div class="myDatepicker">
+          <datepicker
+            [hidden]="!showDateETA"
+            [(ngModel)]="deal.ETA"
+            [showWeeks]="true"
+            [minDate]="minDate"
+            [dateDisabled]="disabledDate"
+            [onlyCurrentMonth]=false
+          >
+          </datepicker>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="trasportDays">Transport Days</label></td>
+      <td><input type="text" name="trasportDays" [(ngModel)]="deal.TransportDays">
+      </td>
+    </tr>
+
   </table>
+
 </div>
-
-
 <div class="col-md-6 offset-sm-3">
   <input type='submit' (click)="submitDeal()"/>
 </div>

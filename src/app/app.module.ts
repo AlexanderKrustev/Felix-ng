@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import {DealsModule} from "./Deals/deals.module";
+import {AlertModule} from "ngx-bootstrap"
 
 
 
@@ -39,7 +40,8 @@ import {DataService} from "./Services/data.services";
     AppRoutesModule,
     VarsModule,
     FormsModule,
-    DealsModule
+    DealsModule,
+    AlertModule.forRoot()
   ],
   providers: [
     AuthService,

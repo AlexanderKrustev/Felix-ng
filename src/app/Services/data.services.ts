@@ -8,7 +8,9 @@ export class DataService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private options: RequestOptions = new RequestOptions({headers: this.headers});
 
-  constructor(private http: Http, private loader: LoaderService) {
+  constructor(private http: Http,
+              private loader: LoaderService)
+  {
     this.updateHeader();
   }
 

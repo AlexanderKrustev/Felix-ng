@@ -1,0 +1,7 @@
+1. Trasnpost Company COMPONENT
+2. Add transport company picker at deal creator
+3. Break create deal form into components- at least date picker
+4. Deal show
+5. sreaching
+6. To excel
+7. finsih create deal + tests+ validation+calculations
