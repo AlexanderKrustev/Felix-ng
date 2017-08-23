@@ -1,0 +1,9 @@
+<button class="btn btn-default" (click)="show()">{{showBtnText}}</button>
+<div id="column-picker" *ngIf="pickerShow">
+  <ul>
+    <li *ngFor="let op of colOptions">
+      <label>{{op.Name}}</label>
+      <input type="checkbox" [(ngModel)]="op.Visibility">
+  </ul>
+</div>
+

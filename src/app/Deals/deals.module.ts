@@ -7,22 +7,37 @@ import {FormsModule} from "@angular/forms";
 import {CreateDealComponent} from "./Create/create-deal.component";
 import {DealComponent} from "./deals.component";
 import {DatePipe} from "@angular/common";
+import {ShowDealsComponent} from "./Show/show-deals.component";
+import {RouterModule} from "@angular/router";
+import {ColumnsPickerComponent} from "./ColumnPicker/columns.picker.component";
+import {ThComponent} from "./Table Compos/th.component";
+import {ShowDealService} from "./Show/show-deal.service";
+import {TrComponent} from "./Table Compos/tr.component";
 
 
 @NgModule({
   declarations: [
-   CreateDealComponent,
-    DealComponent
+    CreateDealComponent,
+    DealComponent,
+    ShowDealsComponent,
+    ColumnsPickerComponent,
+    ThComponent,
+    TrComponent,
+
   ],
   imports: [
     HttpModule,
     BrowserModule,
     FormsModule,
+    RouterModule,
     DatepickerModule.forRoot()
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    ShowDealService
+  ],
   bootstrap: [],
-  exports: [DealComponent]
+  exports: [ShowDealsComponent]
 })
 
 

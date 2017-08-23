@@ -1,0 +1,16 @@
+td:empty {
+   visibility: hidden;
+ }
+th{
+  border: 1px solid;
+}
+
+th:empty {
+  visibility: hidden;
+}
+
+.th-felix:hover{
+  background-color: #f5f5f5
+}
+
+

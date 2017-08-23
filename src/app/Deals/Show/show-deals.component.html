@@ -1,0 +1,21 @@
+<div class="col-sm-6 ">
+  <div class="panel">
+    <column-picker [colOptions]="colOptions" (emitOption)="headerOptions($event)"></column-picker>
+    <h3>Deals Table</h3>
+    <table  class="table table-striped">
+      <thead>
+      <tr>
+        <th class="th-felix" *ngFor="let head of colOptions" (click)="changeSort(head.Name)" [hidden]="!head.Visibility"><th-felix  [colName]='head.Name' [showCol]="head.Visibility"></th-felix></th>
+      </tr>
+      </thead>
+   <tbody>
+      <tr *ngFor="let deal of alldeals" [tr-felix]="deal" [tr-visibility]="colOptions">
+        </tr>
+   </tbody>
+    </table>
+  </div>
+</div>
+<div>
+
+
+</div>

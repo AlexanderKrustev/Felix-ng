@@ -15,6 +15,8 @@ import {PortsComponent} from "./Ports/ports.component";
 import {ConsigneesComponent} from "./Consignees/consignees.component";
 import {AuthGuard} from "./Login/auth-gruard.service";
 import {UnauthorizedComponent} from "./Auth/unauthorized.component"
+import {ShowDealsComponent} from "./Deals/Show/show-deals.component";
+import {CreateDealComponent} from "./Deals/Create/create-deal.component";
 
 
 const routes: Routes =[
@@ -31,7 +33,12 @@ const routes: Routes =[
       {path: 'ports', component: PortsComponent}
     ]},
   {path: 'login', component: LoginComponent},
-  {path: 'deals', component: DealComponent},
+  {path: 'deals', component: DealComponent,
+    children:[
+      {path: '', component: ShowDealsComponent, canActivate: [AuthGuard]},
+      {path: 'create', component: CreateDealComponent},
+      {path: 'show', component: ShowDealsComponent},
+    ]},
   {path: 'unauthorized', component: UnauthorizedComponent}
 
   ];

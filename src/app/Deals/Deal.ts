@@ -1,47 +1,85 @@
-import {Buyer} from "../Buyers/Buyer";
-import {Consignee} from "../Consignees/Consignee";
 
 export class Deal
 {
-  Key: string;
+  constructor(){
 
-  OrderNumber: string;
-  Reexport: boolean
-  BuyerId: string;
-  ConsigneeId: string;
-  CountryId: string;
-  ProductId: string;
-  FormulationId: string;
-  PackageId: string;
-  PortId: string;
-  TransportCompanyId: string;
-  ExpeditionDate: Date;
-  InvoiceNumber: string;
-  InkasoAkrNumber: string;
-  ClientOrderId: string;
-  ZN_MN: string;
-  DestinationPort: string;
-  Quantity: number;
-  PricePerKg: number;
-  Currency: string;
-  CR: number;
-  SumInEuro: number;
-  SumInUSD: number;
-  ViaPort: string;
-  CreditTerms: string;
-  Frei: number;
-  FreiCurrency: string;
-  InsCurrency: string;
-  Insuranse: number;
-  TypeOfTransport: string;
-  TransportUnit: number;
-  TransportNumber: string;
-  TransportDoc: string;
-  DateBL: Date;
-  ETD: Date;
-  ETA: Date;
-  TransportDays: number;
+  }
 
+  Key: string=null
+
+  OrderNumber: string=null
+
+  Reexport: boolean=null
+
+  BuyerId: string=null
+
+  ConsigneeId: string=null
+
+  CountryId: string=null
+
+  ProductId: string=null
+
+  FormulationId: string=null
+
+  PackageId: string=null
+
+  PortId: string=null
+
+  Buyer:string=null
+
+  TransportCompanyId: string=null
+
+  ExpeditionDate: Date=null
+
+  InvoiceNumber: string=null
+
+  InkasoAkrNumber: string=null
+
+  ClientOrderId: string=null
+
+  ZN_MN: string=null
+
+  DestinationPort: string=null
+
+  Quantity: number=null
+
+  PricePerKg: number=null
+
+  Currency: string=null
+
+  CR: number=null
+
+  SumInEuro: number=null
+
+  SumInUSD: number=null
+
+  ViaPort: string=null
+
+  CreditTerms: string=null
+
+  Frei: number=null
+
+  FreiCurrency: string=null
+
+  InsCurrency: string=null
+
+  Insuranse: number=null
+
+  TypeOfTransport: string=null
+
+  TransportUnit: number=null
+
+  TransportNumber: string=null
+
+  TransportDoc: string=null
+
+  DateBL: Date=null
+
+  ETD: Date=null
+
+  ETA: Date=null
+
+  TransportDays: number=null
 
 
 }
